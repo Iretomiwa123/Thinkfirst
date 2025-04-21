@@ -94,9 +94,13 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0px;
+  margin-top: 20px;
   margin-bottom: 0px;
   color: #212741;
+}
+
+.header-text{
+  margin-top: 50px;
 }
 
 ul {
@@ -113,7 +117,10 @@ img {
   width: 100%;
   overflow: hidden;
 }
-
+.logo img{
+  max-height: 50px;
+  max-width: 100px;
+}
 /* 
 ---------------------------------------------
 global styles
@@ -126,12 +133,12 @@ body {
 }
 
 ::selection {
-  background: #ff511a;
+  background: #7ec334;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #ff511a;
+  background: #7ec334;
   color: #fff;
 }
 
@@ -151,14 +158,14 @@ body {
   }
 }
 
-.green-button a {
+ .green-button a {
   font-size: 14px;
   color: #fff;
-  background-color: #43ba7f;
+  background-color: #7CB342;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 5px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   transition: all .3s;
@@ -171,11 +178,11 @@ body {
 .orange-button a {
   font-size: 14px;
   color: #fff;
-  background-color: #ff511a;
+  background-color: #212741;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 5px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   transition: all .3s;
@@ -183,7 +190,8 @@ body {
 
 .orange-button a:hover {
   opacity: 0.9;
-}
+} 
+
 
 section {
   margin-top: 120px;
@@ -200,7 +208,7 @@ section {
 .section-heading h6 {
   font-size: 16px;
   text-transform: uppercase;
-  color: #ff511a;
+  color: #7CB342;
   font-weight: 700;
 }
 
@@ -223,7 +231,7 @@ section {
 header
 --------------------------------------------- 
 */
-.background-header {
+/* .background-header {
   background-color: #212741;
   height: 80px!important;
   position: fixed!important;
@@ -231,10 +239,10 @@ header
   left: 0;
   right: 0;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
-}
+} */
 
 .header-area {
-  background-image: url(../images/header-bg.png);
+  background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -319,12 +327,11 @@ header
 .header-area .main-nav .nav li:last-child a {
   font-size: 14px;
   color: #fff;
-  background-color: #43ba7f;
+  background-color: #7CB342;
   padding: 10px 20px !important;
   display: inline-block;
   border-radius: 5px;
   font-weight: 500;
-  text-transform: capitalize;
   height: auto;
   line-height: 25px;
   letter-spacing: 0.5px;
@@ -332,8 +339,10 @@ header
 }
 
 .header-area .main-nav .nav li:last-child a:hover {
+  background-color: #36a66d; /* Slightly darker green */
   color: #fff;
 }
+
 
 .header-area .main-nav .nav li.has-sub ul.sub-menu li:last-child a,
 .background-header .main-nav .nav li.has-sub ul.sub-menu li:last-child a {
@@ -353,12 +362,12 @@ header
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #ff511a;
+  color: #7CB342;
 }
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
-  color: #ff511a;
+  color: #7CB342;
   opacity: 1;
 }
 
@@ -418,7 +427,7 @@ header
 
 .header-area .main-nav .nav li.has-sub ul li a:hover {
   background: #fff;
-  color: #ff511a!important;
+  color: #43ba7f!important;
   padding-left: 25px;
 }
 
@@ -558,7 +567,7 @@ header
 }
 
 .header-area.header-sticky .nav li a.active {
-  color: #ff511a;
+  color: #43ba7f;
 }
 
 @media (max-width: 1200px) {
@@ -577,7 +586,7 @@ header
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #ff511a!important;
+    color: #43ba7f!important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -639,7 +648,7 @@ header
   }
   .header-area .main-nav .nav li a:hover {
     background: #eee !important;
-    color: #ff511a!important;
+    color: #43ba7f!important;
   }
   .header-area .main-nav .nav li.has-sub ul.sub-menu {
     position: relative;
@@ -698,16 +707,28 @@ banner
 }
 
 .slide-inner {
-  position: absolute;
+  position: relative; /* Important: makes ::before position correctly */
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   background-size: cover;
   background-position: center;
+  z-index: 1;
 }
 
-.swiper-slide-active h2 {
+.slide-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 0;
+}
+
+
+
+.swiper-slide-active h3 {
   animation: fadeInLeft .8s;
   -webkit-animation-delay: 1s;
   animation-delay: .3s;
@@ -738,7 +759,7 @@ banner
 
 .slide-inner .header-text {
   position: absolute;
-  width: 50%;
+  width: 60%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -746,16 +767,24 @@ banner
 .slide-inner .header-text h2 {
   position: relative;
   z-index: 2;
-  font-size: 56px;
+  font-size: 52px;
   color: #fff;
   font-weight: 700;
   opacity: 1;
   visibility: visible;
   line-height: 70px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+#changing-text::after {
+  content: '|';
+  animation: blink 0.7s infinite;
 }
 
-.slide-inner .header-text .div-dec {
+/* @keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+} */
+.header-text .div-dec {
   width: 80px;
   height: 6px;
   border-radius: 3px;
@@ -765,17 +794,35 @@ banner
   visibility: visible;
 }
 
-.slide-inner .header-text p {
+.header-text p {
   color: #fff;
   margin-right: 60px;
+  margin-top: 20px;
   margin-bottom: 50px;
   opacity: 1;
+  font-size: 18px;
   visibility: visible;
 }
 
 .slide-inner .header-text h2 em {
   font-style: normal;
-  color: #ff511a;
+  color: #7ec334;
+}
+#dynamic-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #000;
+  animation: blink-caret 0.7s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
 }
 
 .slide-inner .header-text .buttons {
@@ -825,7 +872,7 @@ section.services {
   transition: all .5s;
   float: left;
   font-size: 64px;
-  color: #43ba7f;
+  color: #7ec334;
   margin-bottom: 30px;
   margin-right: 30px;
 }
@@ -838,33 +885,46 @@ cta
 ---------------------------------------------
 */
 
+
 section.simple-cta {
-  background-image: url(../images/cta-bg.jpg);
+  background-image: url(../images/home1.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   width: 100%;
-  padding: 80px 0px;
+  height: 100%;
+  max-height: 300px;
+  padding: 100px 0px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
 }
 
-section.simple-cta .left-image {
-  margin-right: 45px;
+section.simple-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
 }
+
 
 section.simple-cta h4 {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 32px;
   color: #fff;
-  line-height: 50px;
 }
 
 section.simple-cta h4 em {
   font-style: normal;
-  color: #43ba7f;
+  color: #7CB342; 
+  font-weight: 600;
 }
 
 section.simple-cta h4 strong {
-  color: #ff511a;
+  color: #ffffff; 
   font-weight: 700;
 }
 
@@ -925,7 +985,7 @@ section.about-us .naccs .menu div {
 }
 
 section.about-us .naccs .menu div.active {
-  color: #ff511a;
+  color: #7CB342;
 }
 
 section.about-us ul.nacc {
@@ -967,7 +1027,7 @@ section.about-us ul.nacc li span.title {
 }
 
 section.about-us ul.nacc li span.item-title {
-  color: #43ba7f !important;
+  color: #7CB342 !important;
   font-weight: 600 !important;
 }
 
@@ -1016,18 +1076,32 @@ section.calculator {
   background-position: center center;
   background-size: cover;
   width: 100%;
-  padding: 80px 0px;
+  padding: 80px 0;
 }
 
 section.calculator .left-image {
-  margin: -110px 45px -80px 0px;
+  margin: 0 auto;
+  text-align: center;
+  max-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.calculator .left-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
 }
 
 section.calculator .section-heading {
   text-align: left;
+  margin-bottom: 30px;
 }
 
-section.calculator .section-heading h4 {
+
+section.calculator .section-heading h5 {
   color: #fff;
 }
 
@@ -1057,7 +1131,7 @@ section.calculator .section-heading h4 {
 #calculate button.orange-button {
   font-size: 14px;
   color: #fff;
-  background-color: #ff511a;
+  background-color: #7CB342;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 5px;
@@ -1102,7 +1176,7 @@ section.testimonials .section-heading {
 .testimonials .item i {
   width: 70px;
   height: 70px;
-  background-color: #43ba7f;
+  background-color: #7CB342;
   display: inline-block;
   text-align: center;
   line-height: 70px;
@@ -1129,7 +1203,7 @@ section.testimonials .section-heading {
   display: block;
   font-size: 15px;
   font-weight: 600;
-  color: #43ba7f;
+  color: #7CB342;
 }
 
 .testimonials .item img {
@@ -1149,13 +1223,13 @@ section.testimonials .section-heading {
 .testimonials .owl-dots .owl-dot {
   width: 10px;
   height: 10px;
-  background-color: #ffa88c;
+  background-color: #7ec334;
   border-radius: 50%;
   margin: 0px 4px;
 }
 
 .testimonials .owl-dots .active {
-  background-color: #ff511a;
+  background-color: #a3d270;
 }
 
 
@@ -1188,22 +1262,31 @@ section.partners .item:hover {
 footer 
 --------------------------------------------- 
 */
-
 footer {
-  background-color: #181d30;
+  background-color: #2e4a40;
   text-align: center;
-  padding: 25px 0px;
+  padding: 25px 0;
+  color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
 }
 
 footer p {
-  color: #fff;
-  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+  color: inherit;
 }
 
-footer p a {
-  color: #ff511a;
+footer a {
+  color: #43ba7f;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
 
 
 /* 
@@ -1213,13 +1296,28 @@ page heading
 */
 
 .page-heading {
-  background-image: url(../images/heading-bg.jpg);
+  background-image: url(../images/home1.jpg); /* Replace with /mnt/data/slide-01.jpg if you're using that image */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 215px 0px 120px 0px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #fff; /* Makes text visible on dark background */
 }
+
+.page-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity for more/less darkness */
+  z-index: -1;
+}
+
 
 .page-heading h2 {
   font-size: 56px;
@@ -1245,6 +1343,10 @@ about us page
 
 section.top-section .left-image img {
   border-radius: 10px;
+  height: 100%;
+  max-height: 500px;
+  width: 100%;
+  max-width: 500px;
 }
 
 section.top-section .accordions {
@@ -1280,7 +1382,7 @@ section.top-section .accordions {
   transition: transform 200ms ease-in-out;
 }
 .accordion-head.is-open {
-  color: #43ba7f;
+  color:  #A4E670;
   border-bottom: none;
 }
 .accordion-head.is-open .icon {
@@ -1299,7 +1401,7 @@ section.top-section .accordions {
 }
 
 section.what-we-do {
-  margin-bottom: -30px;
+  margin-bottom: 30px;
 }
 
 .what-we-do .left-content {
@@ -1329,7 +1431,7 @@ section.what-we-do {
   position: absolute;
   font-style: normal;
   font-size: 44px;
-  color: #43ba7f;
+  color: #A4E670;
   font-weight: 600;
   right: 15px;
   top: 5px;
@@ -1393,15 +1495,16 @@ services page
 .main-services .right-text-content i,
 .main-services .left-text-content i {
   font-size: 64px;
-  color: #43ba7f;
-  background-color: #ecf8f2;
+  color: #8DC63F; 
+  background-color: #f2f8ef;
   width: 120px;
   height: 120px;
   text-align: center;
   display: inline-block;
   line-height: 120px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
+
 
 .main-services .right-text-content h4,
 .main-services .left-text-content h4 {
@@ -1545,7 +1648,7 @@ section.map .info-item:hover {
 
 section.map .info-item i {
   font-size: 36px;
-  color: #43ba7f;
+  color: #7CB342;
   margin-bottom: 25px;
 }
 
@@ -1559,14 +1662,17 @@ section.map .info-item h4 {
 section.map .info-item a {
   font-size: 15px;
   font-weight: 600;
-  color: #43ba7f;
+  color: #7CB342;
   transition: all 0.3s;
 }
 
 section.map .info-item a:hover {
-  color: #ff511a;
+  color: #43ba7f;
 }
 
+.contact-us-form{
+  margin-bottom: 30px;
+}
 #contact input {
   width: 100%;
   height: 50px;
@@ -1602,7 +1708,7 @@ section.map .info-item a:hover {
 #contact button.orange-button {
   font-size: 14px;
   color: #fff;
-  background-color: #ff511a;
+  background-color: #7CB342;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 5px;
