@@ -687,6 +687,7 @@ header
   .header-area .main-nav .nav {
     display: flex !important;
   }
+  
 }
 
 
@@ -773,7 +774,7 @@ banner
   z-index: 2;
   font-size: 6vw;
   max-font-size: 52px;
-  min-font-size: 24px;
+  min-font-size: 36px;
   color: #fff;
   font-weight: 700;
   opacity: 1;
@@ -785,8 +786,8 @@ banner
 @media screen and (max-width: 768px) {
 
   .slide-inner .header-text {
-    left: 30%;
-    transform: translate(-50%, -30%);
+    left: 40%;
+    transform: translate(-50%, -50%);
   }
 
 }
@@ -941,6 +942,14 @@ section.simple-cta::before {
   section.simple-cta {
     padding: 4rem 1rem;
     min-height: 250px;
+  }
+  .header-text p {
+    font-size: 16px;
+    visibility: visible;
+  }
+  .header-text h2 {
+    font-size: 36px !important;
+    visibility: visible;
   }
 }
 
@@ -1382,12 +1391,18 @@ about us page
 --------------------------------------------- 
 */
 
-section.top-section .left-image img {
+.top-section .left-image img {
   border-radius: 10px;
   height: 100%;
   max-height: 500px;
   width: 100%;
   max-width: 500px;
+}
+
+@media (max-width: 567px) {
+  .top-section .left-image img {
+    display: none !important;
+  }
 }
 
 section.top-section .accordions {
@@ -1417,7 +1432,11 @@ section.top-section .accordions {
     padding: 1rem;
     font-size: 1.2rem;
   }
+  .page-heading h2 {
+    font-size: 36px !important;
+  }
 }
+
 .accordion-head .icon {
   float: right;
   transition: transform 200ms ease-in-out;
